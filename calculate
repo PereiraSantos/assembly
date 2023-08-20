@@ -1,0 +1,24 @@
+%include 'funcao.s'
+
+section .text
+global _start
+
+_start:
+    pop ecx
+    pop edx
+    sub ecx, 1
+    mov edx, 0
+
+nextArg:
+    cmp ecx, 0h
+    jz noNoreArgs
+    pop eax
+    call atoi
+    add edx, eax
+    dec ecx
+    jmp nextArg
+
+noNoreArgs:
+    mov eax, edx
+    call iprintLF
+    call quit
