@@ -1,0 +1,17 @@
+%include 'funcao.s'
+
+section .data
+msg db 'Segundos desde janeiro 01 1970', 0h
+
+section .text
+global _start
+
+_start:
+    mov eax, msg
+    call sprint
+
+    mov eax, 13
+    int 80h
+
+    call iprintLF
+    call quit
