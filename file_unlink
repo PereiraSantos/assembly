@@ -1,0 +1,14 @@
+%include 'funcao.s'
+
+section .data
+filename db 'readme.txt', 0h
+
+section .text
+global _start
+
+_start:
+    mov ebx, filename
+    mov eax, 10
+    int 80h
+
+    call quit
